@@ -9,6 +9,7 @@ namespace HCProblemConsoleApps.Classes {
     class Slideshow {
         protected List<Slide> slides;
         protected List<Slide> slidesSorted;
+        protected List<Slide> slidesFinal;
 
         private Matrix<Double> matrix;
 
@@ -34,6 +35,7 @@ namespace HCProblemConsoleApps.Classes {
         public Slideshow() {
             slides = new List<Slide>();
             slidesSorted = new List<Slide>();
+            slidesFinal = new List<Slide>();
             matrix = Matrix<Double>.Build.Dense(0, 0);
         }
 
@@ -41,6 +43,7 @@ namespace HCProblemConsoleApps.Classes {
             slides = slide;
             slidesSorted = slides;
             slidesSorted.Sort(ComparisonByTagsNum);
+            slidesFinal = new List<Slide>();
             matrix = Matrix<Double>.Build.Dense(slidesSorted.Count(), slidesSorted.Count(), (i, j) => slidesSorted[i].CompareTo(slidesSorted[j]));
         }
 
@@ -61,6 +64,26 @@ namespace HCProblemConsoleApps.Classes {
 
         public void AddSlide(Slide slide) {
             slides.Add(slide);
+        }
+
+        public void SlidesFinal() {
+            int firstSlideId, secondSlideId;
+            (firstSlideId, secondSlideId) = GetFirstSecondSlideID();
+
+
+        }
+
+        private (int, int) GetFirstSecondSlideID() {
+            int N = matrix.ColumnCount;
+            int secondElemIndex = 1;
+
+            double max = matrix.Column(0).Enumerate().Max();
+            for (int i = 0; i < N; i++)
+            {
+                if (matrix[0, i] == max)
+                    secondElemIndex = i;
+            }
+            return (0, secondElemIndex);
         }
     }
 }
