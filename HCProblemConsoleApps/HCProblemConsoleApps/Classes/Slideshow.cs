@@ -66,24 +66,25 @@ namespace HCProblemConsoleApps.Classes {
             slides.Add(slide);
         }
 
-        public void SlidesFinal() {
-            int firstSlideId, secondSlideId;
-            (firstSlideId, secondSlideId) = GetFirstSecondSlideID();
+        public void SlidesFinal()
+        {
+            int firstSlideId = GetFirstSecondSlideID();
 
 
         }
 
-        private (int, int) GetFirstSecondSlideID() {
+        private int GetFirstSecondSlideID() {
             int N = matrix.ColumnCount;
-            int secondElemIndex = 1;
 
-            double max = matrix.Column(0).Enumerate().Max();
+            //int secondElemIndex = 1;
+
+            /*double max = matrix.Column(0).Enumerate().Max();
             for (int i = 0; i < N; i++)
             {
                 if (matrix[0, i] == max)
                     secondElemIndex = i;
-            }
-            return (0, secondElemIndex);
+            }*/
+            return 0;
         }
     }
 }
