@@ -10,7 +10,7 @@ namespace HCProblemConsoleApps.Classes {
         protected List<Slide> slides;
         protected List<Slide> slidesSorted;
         protected List<Slide> slidesFinal;
-
+        private int N;
         private Matrix<Double> matrix;
 
         private static int ComparisonByTagsNum(Slide s1, Slide s2) {
@@ -37,6 +37,7 @@ namespace HCProblemConsoleApps.Classes {
             slidesSorted = new List<Slide>();
             slidesFinal = new List<Slide>();
             matrix = Matrix<Double>.Build.Dense(0, 0);
+            N = 0;
         }
 
         public Slideshow(List<Slide> slide) {
@@ -45,6 +46,7 @@ namespace HCProblemConsoleApps.Classes {
             slidesSorted.Sort(ComparisonByTagsNum);
             slidesFinal = new List<Slide>();
             matrix = Matrix<Double>.Build.Dense(slidesSorted.Count(), slidesSorted.Count(), (i, j) => slidesSorted[i].CompareTo(slidesSorted[j]));
+            N = matrix.ColumnCount;
         }
 
         public string SlideshowOUT() {
@@ -66,11 +68,22 @@ namespace HCProblemConsoleApps.Classes {
             slides.Add(slide);
         }
 
-        public void SlidesFinal()
-        {
-            int firstSlideId = GetFirstSecondSlideID();
+        public void SlidesFinalPush(int prevSlideId) {
+            double max = matrix.Column(prevSlideId).Enumerate().Max();
 
-
+            for (int j = 0; j < N; j++)
+            {
+                if (matrix[prevSlideId, j] == max)
+                {
+                    for (int k = 0; k < N; k++)
+                    {
+                        matrix[j, k] = 0;
+                        matrix[k, j] = 0;
+                    }
+                    slidesFinal.Add(slidesSorted[j]);
+                    SlidesFinalPush(j);
+                }
+            }
         }
 
         private int GetFirstSecondSlideID() {
