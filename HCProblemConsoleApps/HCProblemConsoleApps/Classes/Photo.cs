@@ -14,18 +14,18 @@ namespace HCProblemConsoleApps.Classes
 
         public HashSet<string> Tags { get; private set; }
 
-        public Photo(int Id, char IsHorizontal, HashSet<string> tags = null)
+        public Photo(int Id, bool IsHorizontal, HashSet<string> tags = null)
         {
             if (tags == null)
                 tags = new HashSet<string>();
             this.Id = Id;
-            if (IsHorizontal == 'H')
-                this.IsHorizontal = false;
-            else
+            if (IsHorizontal)
                 this.IsHorizontal = true;
+            else
+                this.IsHorizontal = false;
         }
 
-        public void addTag(string tag)
+        public void addTags(string tag)
         {
             Tags.Add(tag);
         }
