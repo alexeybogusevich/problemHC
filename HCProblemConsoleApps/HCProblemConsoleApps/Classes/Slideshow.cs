@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace HCProblemConsoleApps.Classes {
     class Slideshow {
         protected List<Slide> slides;
         protected List<Slide> slidesSorted;
+
+        private Matrix<int> matrix;
 
         private static int ComparisonByTagsNum(Slide s1, Slide s2) {
             if (s1.Tags.Count > s2.Tags.Count)
@@ -24,15 +27,21 @@ namespace HCProblemConsoleApps.Classes {
             }
         }
 
+        public void MatrixOut() {
+
+        }
+
         public Slideshow() {
             slides = new List<Slide>();
             slidesSorted = new List<Slide>();
+            matrix = CreateMatrix.DenseDiagonal<int>(0, 0);
         }
 
         public Slideshow(List<Slide> slide) {
             slides = slide;
             slidesSorted = slides;
             slidesSorted.Sort(ComparisonByTagsNum);
+            matrix = Matrix<int>.Build.Dense(slidesSorted.Count(), slidesSorted.Count(), (i, j) => slidesSorted[i].CompareTo(slidesSorted[j]));
         }
 
         public string SlideshowOUT() {
