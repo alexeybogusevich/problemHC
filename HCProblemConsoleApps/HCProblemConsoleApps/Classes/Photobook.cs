@@ -57,6 +57,12 @@ namespace HCProblemConsoleApps.Classes
 
         public override string ToString()
         {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"{_photos.Count}");
+
+            _photos.ForEach(photo => sb.AppendLine(photo.ToString()));
+
             return base.ToString();
         }
     }
