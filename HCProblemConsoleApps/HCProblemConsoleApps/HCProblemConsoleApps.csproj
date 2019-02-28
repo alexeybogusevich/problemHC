@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Matrix, Version=2.1.0.5, Culture=neutral, PublicKeyToken=0120f1df71ff86bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MatriX.2.1.0.5\lib\net45\Matrix.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
