@@ -22,11 +22,11 @@ namespace HCProblemConsoleApps
 
         static List<string> files = new List<string>()
         {
-            "a_example.txt",
-            "b_lovely_landscapes.txt",
+            //"a_example.txt",
+            //"b_lovely_landscapes.txt",
             "c_memorable_moments.txt",
-            "d_pet_pictures.txt",
-            "e_shiny_selfies.txt"
+            //"d_pet_pictures.txt",
+           // "e_shiny_selfies.txt"
         };
 
         static void Main(string[] args)

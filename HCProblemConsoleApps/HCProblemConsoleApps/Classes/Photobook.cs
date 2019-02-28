@@ -16,6 +16,7 @@ namespace HCProblemConsoleApps.Classes
             _photos = new List<Photo>();
         }
 
+
         public Photobook(List<Photo> photos)
         {
             _photos = photos;
@@ -91,7 +92,8 @@ namespace HCProblemConsoleApps.Classes
 
         public Slideshow DoJob2()
         {
-            var res = new Slideshow();
+            
+            var listSlides = new List<Slide>();
 
             Photo temp = null;
 
@@ -119,8 +121,11 @@ namespace HCProblemConsoleApps.Classes
                     slide = new Slide(photo);
                 }
 
-                res.AddSlide(slide);
+                listSlides.Add(slide);
             }
+            var res = new Slideshow(listSlides);
+
+            res.MatrixOut();
 
             return res;
         }
