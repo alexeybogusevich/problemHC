@@ -31,11 +31,21 @@ namespace HCProblemConsoleApps.Classes
 
                 var photoList = new List<Photo>();
 
+                int idCounter = 0;
+
                 string temp;
 
                 while ((temp = reader.ReadLine()) != null)
                 {
+                    var line = temp.Split(' ');
 
+                    bool isHorisontal = line[0] == "H";
+
+                    HashSet<string> tags = new HashSet<string>(line.Skip(2));                      
+                    
+                    
+
+                    idCounter++;
                 }
 
                 result = new Photobook(photoList);
