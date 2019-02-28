@@ -8,32 +8,21 @@ namespace HCProblemConsoleApps.Classes
 {
     class Photo
     {
-        private bool type; //horizontal - 0; vertical - 1
-        private int numberOfTags;
-        private HashSet<string> tags;
+        public bool IsHorizontal { get; private set; }
 
-        public bool Type
+        public int ID { get; private set; }
+
+        public HashSet<string> Tags { get; private set; }
+
+        public Photo(int ID, bool IsHorizontal, HashSet<string> tags = null)
         {
-            set
-            {
-                type = value;
-            }
-            get
-            {
-                return type;
-            }
+            if (tags == null)
+                tags = new HashSet<string>();
         }
 
-        public int NumberOfTags
+        public void addTag(string tag)
         {
-            set
-            {
-                numberOfTags = value;
-            }
-            get
-            {
-                return numberOfTags;
-            }
+            Tags.Add(tag);
         }
     }
 }
