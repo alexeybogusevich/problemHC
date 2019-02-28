@@ -10,7 +10,7 @@ namespace HCProblemConsoleApps.Classes
     {
         private bool type; //horizontal - 0; vertical - 1
         private int numberOfTags;
-        private string[] tags;
+        private HashSet<string> tags;
 
         public bool Type
         {
@@ -35,7 +35,5 @@ namespace HCProblemConsoleApps.Classes
                 return numberOfTags;
             }
         }
-
-
     }
 }
