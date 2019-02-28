@@ -5,29 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HCProblemConsoleApps.Classes {
-    class Slide {
+    class Slide
+    {
         public Photo leftPhoto { get; set; }
         public Photo rightPhoto { get; set; }
 
         public HashSet<string> Tags { get; private set; }
 
-        public Slide() {
+        public Slide()
+        {
             Tags = new HashSet<string>();
         }
 
-        public Slide(Photo horizontal) {
+        public Slide(Photo horizontal)
+        {
             leftPhoto = horizontal;
             Tags = horizontal.Tags;
         }
 
-        public Slide(Photo vertical1, Photo vertical2) {
+        public Slide(Photo vertical1, Photo vertical2)
+        {
             leftPhoto = vertical1;
             rightPhoto = vertical2;
             Tags = vertical1.Tags;
             Tags.UnionWith(vertical2.Tags);
         }
 
-        public string GetPhotos() {
+        public string GetPhotos()
+        {
             if (rightPhoto == null)
             {
                 return leftPhoto.Id.ToString();
@@ -38,7 +43,8 @@ namespace HCProblemConsoleApps.Classes {
             }
         }
 
-        public int CompareTo(Slide slide2) {
+        public int CompareTo(Slide slide2)
+        {
             int intersection = this.Tags.Intersect(slide2.Tags).Count();
 
             int AwoB = this.Tags.Except(slide2.Tags).Count();
