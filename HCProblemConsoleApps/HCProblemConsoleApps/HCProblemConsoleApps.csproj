@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ListExt.cs" />
     <Compile Include="Classes\Photo.cs" />
     <Compile Include="Classes\Photobook.cs" />
     <Compile Include="Classes\Slide.cs" />

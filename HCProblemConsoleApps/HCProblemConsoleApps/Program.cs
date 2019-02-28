@@ -15,7 +15,7 @@ namespace HCProblemConsoleApps
         static void CreateOutput(string fileName)
         {
             var photobook = Photobook.FromFile(fileName);
-            File.WriteAllText($"{fileName}_out.txt", photobook.DoJob2().SlideshowOUT());
+            File.WriteAllText($"{fileName}_out.txt", photobook.DoJob3().SlideshowOUT());
         }
 
         static List<string> files = new List<string>() { "a_example.txt", "b_lovely_landscapes.txt", "c_memorable_moments.txt", "d_pet_pictures.txt", "e_shiny_selfies.txt" };
