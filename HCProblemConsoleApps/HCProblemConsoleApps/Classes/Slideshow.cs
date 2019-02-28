@@ -62,5 +62,57 @@ namespace HCProblemConsoleApps.Classes {
         public void AddSlide(Slide slide) {
             slides.Add(slide);
         }
+
+        //LEXUS//
+        public int sum()
+        {
+            double maxElemInMatrix = matrix[0, 1];
+            int indx0 = 0;
+
+            int indx1 = 1;
+            List<int> resInxs = new List<int>();
+            for (int i = 0; i < matrix.ColumnCount; ++i)
+            {
+                for (int j = i + 1; j < matrix.ColumnCount; ++j)
+                {
+                    if (matrix[i, j] > maxElemInMatrix)
+                    {
+                        maxElemInMatrix = matrix[i, j];
+                        indx0 = i;
+                        indx1 = j;
+                    }
+                }
+            }
+            int counter = 1;
+            resInxs.Add(Math.Min(indx0, indx1));
+            resInxs.Add(Math.Max(indx0, indx1));
+            while (resInxs.Count() < matrix.ColumnCount - 1)
+            {
+                double maxOnIteration = 0;
+                int nextIndex = -1;
+                for (int i = 0; i < resInxs[counter]; ++i)
+                {
+                    if (resInxs.Contains(i)) continue;
+                    if (matrix[i, resInxs[counter]] > maxOnIteration)
+                    {
+                        maxOnIteration = matrix[i, resInxs[counter]];
+                        nextIndex = i;
+                    }
+                }
+                for (int j = matrix[i, resInxs[counter]] + 1; j < matrix.ColumnCount; ++j)
+                {
+                    if (resInxs.Contains(j)) continue;
+                    if (matrix[resInxs[counter], j] > maxOnIteration)
+                    {
+                        maxOnIteration = matrix[resInxs[counter], j];
+                        nextIndex = j;
+                    }
+                }
+                resInxs.Add(nextIndex);
+                ++counter;
+            }
+            return resInxs.Sum();
+        }
+        //LEXUS//
     }
 }
