@@ -8,8 +8,8 @@ namespace HCProblemConsoleApps.Classes
 {
     class Slide 
     {
-        protected Photo leftPhoto;
-        protected Photo rihtPhoto;
+        public Photo leftPhoto { get; set; }
+        public Photo rihtPhoto { get; set; }
 
         Slide() { }
 
