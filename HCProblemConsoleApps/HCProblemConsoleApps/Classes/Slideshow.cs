@@ -11,5 +11,9 @@ namespace HCProblemConsoleApps.Classes {
         Slideshow() {
             slides = new List<Slide>();
         }
+
+        Slideshow(List<Slide> slide) {
+            slides = slide;
+        }
     }
 }
