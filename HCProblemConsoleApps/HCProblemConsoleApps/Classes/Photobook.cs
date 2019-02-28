@@ -16,6 +16,7 @@ namespace HCProblemConsoleApps.Classes
             _photos = new List<Photo>();
         }
 
+
         public Photobook(List<Photo> photos)
         {
             _photos = photos;
