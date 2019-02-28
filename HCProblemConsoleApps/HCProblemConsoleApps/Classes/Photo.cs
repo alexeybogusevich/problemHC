@@ -20,9 +20,13 @@ namespace HCProblemConsoleApps.Classes
                 tags = new HashSet<string>();
             this.Id = Id;
             if (IsHorizontal)
+            {
                 this.IsHorizontal = true;
+            }
             else
+            {
                 this.IsHorizontal = false;
+            }
         }
 
         public void addTags(string tag)
