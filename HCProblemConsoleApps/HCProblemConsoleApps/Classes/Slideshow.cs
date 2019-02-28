@@ -10,7 +10,7 @@ namespace HCProblemConsoleApps.Classes {
         protected List<Slide> slides;
         protected List<Slide> slidesSorted;
 
-        private Matrix<int> matrix;
+        private Matrix<Double> matrix;
 
         private static int ComparisonByTagsNum(Slide s1, Slide s2) {
             if (s1.Tags.Count > s2.Tags.Count)
@@ -34,14 +34,14 @@ namespace HCProblemConsoleApps.Classes {
         public Slideshow() {
             slides = new List<Slide>();
             slidesSorted = new List<Slide>();
-            matrix = Matrix<int>.Build.Dense(0, 0);
+            matrix = Matrix<Double>.Build.Dense(0, 0);
         }
 
         public Slideshow(List<Slide> slide) {
             slides = slide;
             slidesSorted = slides;
             slidesSorted.Sort(ComparisonByTagsNum);
-            matrix = Matrix<int>.Build.Dense(slidesSorted.Count(), slidesSorted.Count(), (i, j) => slidesSorted[i].CompareTo(slidesSorted[j]));
+            matrix = Matrix<Double>.Build.Dense(slidesSorted.Count(), slidesSorted.Count(), (i, j) => slidesSorted[i].CompareTo(slidesSorted[j]));
         }
 
         public string SlideshowOUT() {
