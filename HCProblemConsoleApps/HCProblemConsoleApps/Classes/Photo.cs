@@ -10,14 +10,19 @@ namespace HCProblemConsoleApps.Classes
     {
         public bool IsHorizontal { get; private set; }
 
-        public int ID { get; private set; }
+        public int Id { get; private set; }
 
         public HashSet<string> Tags { get; private set; }
 
-        public Photo(int ID, bool IsHorizontal, HashSet<string> tags = null)
+        public Photo(int Id, char IsHorizontal, HashSet<string> tags = null)
         {
             if (tags == null)
                 tags = new HashSet<string>();
+            this.Id = Id;
+            if (IsHorizontal == 'H')
+                this.IsHorizontal = false;
+            else
+                this.IsHorizontal = true;
         }
 
         public void addTag(string tag)
