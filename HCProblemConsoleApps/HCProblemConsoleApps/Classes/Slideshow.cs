@@ -86,16 +86,18 @@ namespace HCProblemConsoleApps.Classes {
             }
         }
 
-        private (int, int) GetFirstSecondSlideID() {
-            int secondElemIndex = 1;
+        private int GetFirstSecondSlideID() {
+            int N = matrix.ColumnCount;
 
-            double max = matrix.Column(0).Enumerate().Max();
+            //int secondElemIndex = 1;
+
+            /*double max = matrix.Column(0).Enumerate().Max();
             for (int i = 0; i < N; i++)
             {
                 if (matrix[0, i] == max)
                     secondElemIndex = i;
-            }
-            return (0, secondElemIndex);
+            }*/
+            return 0;
         }
     }
 }
