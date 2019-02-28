@@ -7,13 +7,32 @@ using System.Threading.Tasks;
 namespace HCProblemConsoleApps.Classes {
     class Slideshow {
         protected List<Slide> slides;
+        protected List<Slide> slidesSorted;
+
+        private static int ComparisonByTagsNum(Slide s1, Slide s2) {
+            if (s1.Tags.Count > s2.Tags.Count)
+            {
+                return 1;
+            }
+            else if (s1.Tags.Count < s2.Tags.Count)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
         public Slideshow() {
             slides = new List<Slide>();
+            slidesSorted = new List<Slide>();
         }
 
         public Slideshow(List<Slide> slide) {
             slides = slide;
+            slidesSorted = slides;
+            slidesSorted.Sort(ComparisonByTagsNum);
         }
 
         public string SlideshowOUT() {
