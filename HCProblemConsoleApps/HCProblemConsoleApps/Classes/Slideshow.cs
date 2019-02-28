@@ -36,7 +36,7 @@ namespace HCProblemConsoleApps.Classes {
             slides = new List<Slide>();
             slidesSorted = new List<Slide>();
             slidesFinal = new List<Slide>();
-            matrix = Matrix<Double>.Build.Dense(0, 0);
+            matrix = Matrix<Double>.Build.Dense(1, 1);
             N = 0;
         }
 
