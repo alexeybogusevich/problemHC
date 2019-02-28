@@ -95,7 +95,7 @@ namespace HCProblemConsoleApps.Classes
 
             Photo temp = null;
 
-            _photos.Reverse();
+            _photos.Shuffle();
 
             foreach (var photo in _photos)
             {
@@ -120,6 +120,62 @@ namespace HCProblemConsoleApps.Classes
                 }
 
                 res.AddSlide(slide);
+            }
+
+            return res;
+        }
+
+        public Slideshow DoJob3()
+        {
+            var res = new Slideshow();
+
+            Photo temp = null;
+
+            _photos.Shuffle();
+
+            Dictionary<string, List<Photo>> dict = new Dictionary<string, List<Photo>>();
+
+            foreach (var photo in _photos)
+            {
+                var tag = string.Join(" ", photo.Tags.Take(photo.Tags.Count / 2).Select(x => x.ToString()));
+
+                if (!dict.ContainsKey(tag))
+                {
+                    dict[tag] = new List<Photo>();
+                }
+
+                dict[tag].Add(photo);
+            }
+
+            foreach (var p in dict)
+            {
+                foreach (var photo in p.Value)
+                {
+                    Slide slide;
+
+                    if (!photo.IsHorizontal)
+                    {
+                        if (temp == null)
+                        {
+                            temp = photo;
+                        }
+                        else
+                        {
+                            slide = new Slide(temp, photo);
+                            res.AddSlide(slide);
+                            temp = null;
+                        }
+                    }
+                    else
+                    {
+                        slide = new Slide(photo);
+                        res.AddSlide(slide);
+                    }
+
+                    
+                }
+
+                return res;
             }
 
             return res;
