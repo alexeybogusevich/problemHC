@@ -28,7 +28,7 @@ namespace HCProblemConsoleApps.Classes {
         }
 
         public void MatrixOut() {
-
+            matrix.ToMatrixString();
         }
 
         public Slideshow() {
