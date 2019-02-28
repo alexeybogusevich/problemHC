@@ -9,7 +9,7 @@ namespace HCProblemConsoleApps.Classes
     class Slide 
     {
         public Photo leftPhoto { get; set; }
-        public Photo rihtPhoto { get; set; }
+        public Photo rightPhoto { get; set; }
 
         Slide() { }
 
@@ -21,7 +21,19 @@ namespace HCProblemConsoleApps.Classes
         Slide(Photo vertical1, Photo vertical2)
         {
             leftPhoto = vertical1;
-            rihtPhoto = vertical2;
+            rightPhoto = vertical2;
+        }
+
+        public string GetPhotos()
+        {
+            if (rightPhoto == null)
+            {
+                return leftPhoto.ID.ToString();
+            }
+            else
+            {
+                return leftPhoto.ID.ToString() + ' ' + rightPhoto.ID.ToString();
+            }
         }
     }
 }
