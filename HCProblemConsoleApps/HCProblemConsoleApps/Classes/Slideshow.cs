@@ -8,11 +8,11 @@ namespace HCProblemConsoleApps.Classes {
     class Slideshow {
         protected List<Slide> slides;
 
-        Slideshow() {
+        public Slideshow() {
             slides = new List<Slide>();
         }
 
-        Slideshow(List<Slide> slide) {
+        public Slideshow(List<Slide> slide) {
             slides = slide;
         }
 
@@ -20,7 +20,8 @@ namespace HCProblemConsoleApps.Classes {
             StringBuilder sb = new StringBuilder();
             //количество слайдов
             sb.AppendLine(slides.Count.ToString());
-            foreach (Slide slide in slides) {
+            foreach (Slide slide in slides)
+            {
                 //для каждого слайда ID фоток(фотки)
                 sb.AppendLine(slide.GetPhotos());
             }
@@ -28,6 +29,10 @@ namespace HCProblemConsoleApps.Classes {
             string res = sb.ToString();
 
             return res;
+        }
+
+        public void AddSlide(Slide slide) {
+            slides.Add(slide);
         }
     }
 }

@@ -55,6 +55,76 @@ namespace HCProblemConsoleApps.Classes
             return result;
         }
 
+        public Slideshow DoJob()
+        {
+            var res = new Slideshow();
+
+            Photo temp = null;
+
+            foreach (var photo in _photos)
+            {
+                Slide slide;
+
+                if (!photo.IsHorizontal)
+                {
+                    if (temp == null)
+                    {
+                        temp = photo;
+                        continue;
+                    }
+                    else
+                    {
+                        slide = new Slide(temp, photo);
+                        temp = null;
+                    }
+                }
+                else
+                {
+                    slide = new Slide(photo);
+                }
+
+                res.AddSlide(slide);
+            }
+
+            return res;
+        }
+
+        public Slideshow DoJob2()
+        {
+            var res = new Slideshow();
+
+            Photo temp = null;
+
+            _photos.Reverse();
+
+            foreach (var photo in _photos)
+            {
+                Slide slide;
+
+                if (!photo.IsHorizontal)
+                {
+                    if (temp == null)
+                    {
+                        temp = photo;
+                        continue;
+                    }
+                    else
+                    {
+                        slide = new Slide(temp, photo);
+                        temp = null;
+                    }
+                }
+                else
+                {
+                    slide = new Slide(photo);
+                }
+
+                res.AddSlide(slide);
+            }
+
+            return res;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
