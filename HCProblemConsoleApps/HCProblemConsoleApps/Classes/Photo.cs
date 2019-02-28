@@ -14,24 +14,40 @@ namespace HCProblemConsoleApps.Classes
 
         public HashSet<string> Tags { get; private set; }
 
-        public Photo(int Id, bool IsHorizontal, HashSet<string> tags = null)
+        public Photo(int id, bool isHorizontal, HashSet<string> tags = null)
         {
             if (tags == null)
-                tags = new HashSet<string>();
-            this.Id = Id;
-            if (IsHorizontal)
             {
-                this.IsHorizontal = true;
+                Tags = new HashSet<string>();
             }
             else
             {
-                this.IsHorizontal = false;
+                Tags = tags;
             }
+
+            Id = id;
+            IsHorizontal = isHorizontal;
         }
 
-        public void addTags(string tag)
+        public void AddTags(string tag)
         {
             Tags.Add(tag);
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            sb.Append(IsHorizontal ? "H " : "V ");
+            sb.Append(Tags.Count);
+            
+            foreach (var tag in Tags)
+            {
+                sb.Append($" {tag}");
+            }
+
+            return sb.ToString();
+        }
+
     }
 }

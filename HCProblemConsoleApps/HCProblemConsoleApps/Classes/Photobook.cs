@@ -41,9 +41,9 @@ namespace HCProblemConsoleApps.Classes
 
                     bool isHorisontal = line[0] == "H";
 
-                    HashSet<string> tags = new HashSet<string>(line.Skip(2));                      
-                    
-                    
+                    HashSet<string> tags = new HashSet<string>(line.Skip(2));
+
+                    photoList.Add(new Photo(idCounter, isHorisontal, tags));
 
                     idCounter++;
                 }
@@ -53,6 +53,11 @@ namespace HCProblemConsoleApps.Classes
             }
 
             return result;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
