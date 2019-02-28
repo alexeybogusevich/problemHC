@@ -28,11 +28,11 @@ namespace HCProblemConsoleApps.Classes
         {
             if (rightPhoto == null)
             {
-                return leftPhoto.ID.ToString();
+                return leftPhoto.Id.ToString();
             }
             else
             {
-                return leftPhoto.ID.ToString() + ' ' + rightPhoto.ID.ToString();
+                return leftPhoto.Id.ToString() + ' ' + rightPhoto.Id.ToString();
             }
         }
     }

@@ -63,7 +63,7 @@ namespace HCProblemConsoleApps.Classes
 
             _photos.ForEach(photo => sb.AppendLine(photo.ToString()));
 
-            return base.ToString();
+            return sb.ToString();
         }
     }
 }
