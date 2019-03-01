@@ -15,9 +15,9 @@ namespace HCProblemConsoleApps
         static void CreateOutput(string fileName)
         {
             var photobook = Photobook.FromFile(fileName);
-            var r = photobook.DoJob3();
-            Console.WriteLine(r.sum());
-           // File.WriteAllText($"{fileName}_out.txt", r.SlideshowOUT());
+            var r = photobook.DoJobLexus();
+            //Console.WriteLine(r.sum());
+            File.WriteAllText($"{fileName}_out.txt", r.SlideshowOUT());
         }
 
         static List<string> files = new List<string>()

@@ -186,6 +186,41 @@ namespace HCProblemConsoleApps.Classes
             return res;
         }
 
+        public Slideshow DoJobLexus()
+        {
+            var listSlides = new List<Slide>();
+            Photo temp = null;
+            _photos.Shuffle();
+            foreach (var photo in _photos)
+            {
+                Slide slide;
+                if (!photo.IsHorizontal)
+                {
+                    if (temp == null)
+                    {
+                        temp = photo;
+                        continue;
+                    }
+                    else
+                    {
+                        slide = new Slide(temp, photo);
+                        temp = null;
+                    }
+                }
+                else
+                {
+                    slide = new Slide(photo);
+                }
+
+                listSlides.Add(slide);
+            }
+            var res = new Slideshow(listSlides);
+
+            res.LexusSolve()
+
+            return res;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();

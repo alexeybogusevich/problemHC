@@ -68,88 +68,57 @@ namespace HCProblemConsoleApps.Classes {
             slides.Add(slide);
         }
 
-        public void SlidesFinalPush(int prevSlideId) {
-            double max = matrix.Column(prevSlideId).Enumerate().Max();
-
-            for (int j = 0; j < N; j++)
-            {
-                if (matrix[prevSlideId, j] == max)
-                {
-                    for (int k = 0; k < N; k++)
-                    {
-                        matrix[j, k] = 0;
-                        matrix[k, j] = 0;
-                    }
-                    slidesFinal.Add(slidesSorted[j]);
-                    SlidesFinalPush(j);
-                }
-            }
-        }
-
-        private int GetFirstSecondSlideID() {
-            int N = matrix.ColumnCount;
-
-            //int secondElemIndex = 1;
-
-            /*double max = matrix.Column(0).Enumerate().Max();
-            for (int i = 0; i < N; i++)
-            {
-                if (matrix[0, i] == max)
-                    secondElemIndex = i;
-            }*/
-            return 0;
-        }
-
         //LEXUS//
-        public int sum()
+        public void LexusSolve()
         {
             double maxElemInMatrix = matrix[0, 1];
-            int indx0 = 0;
-
-            int indx1 = 1;
-            List<int> resInxs = new List<int>();
-            for (int i = 0; i < matrix.ColumnCount; ++i)
+            int firstSlideIndex = 0;
+            int secondSlideIndex = 1;
+            List<int> resultSlidesIndexes = new List<int>();
+            for (int i = 0; i < N; ++i)
             {
-                for (int j = i + 1; j < matrix.ColumnCount; ++j)
+                for (int j = i + 1; j < N; ++j)
                 {
                     if (matrix[i, j] > maxElemInMatrix)
                     {
                         maxElemInMatrix = matrix[i, j];
-                        indx0 = i;
-                        indx1 = j;
+                        firstSlideIndex = i;
+                        secondSlideIndex = j;
                     }
                 }
             }
             int counter = 1;
-            resInxs.Add(Math.Min(indx0, indx1));
-            resInxs.Add(Math.Max(indx0, indx1));
-            while (resInxs.Count() < matrix.ColumnCount - 1)
+            resultSlidesIndexes.Add(Math.Min(firstSlideIndex, secondSlideIndex));
+            slidesFinal.Add(slidesSorted[firstSlideIndex]);
+            resultSlidesIndexes.Add(Math.Max(firstSlideIndex, secondSlideIndex));
+            slidesFinal.Add(slidesSorted[secondSlideIndex]);
+            while (resultSlidesIndexes.Count() < N - 1)
             {
                 double maxOnIteration = 0;
                 int nextIndex = -1;
-                for (int i = 0; i < resInxs[counter]; ++i)
+                for (int i = 0; i < resultSlidesIndexes[counter]; ++i)
                 {
-                    if (resInxs.Contains(i)) continue;
-                    if (matrix[i, resInxs[counter]] > maxOnIteration)
+                    if (resultSlidesIndexes.Contains(i)) continue;
+                    if (matrix[i, resultSlidesIndexes[counter]] > maxOnIteration)
                     {
-                        maxOnIteration = matrix[i, resInxs[counter]];
+                        maxOnIteration = matrix[i, resultSlidesIndexes[counter]];
                         nextIndex = i;
                     }
                 }
-                for (int j = resInxs[counter] + 1; j < matrix.ColumnCount; ++j)
+                for (int j = resultSlidesIndexes[counter] + 1; j < N; ++j)
                 {
-                    if (resInxs.Contains(j)) continue;
-                    if (matrix[resInxs[counter], j] > maxOnIteration)
+                    if (resultSlidesIndexes.Contains(j)) continue;
+                    if (matrix[resultSlidesIndexes[counter], j] > maxOnIteration)
                     {
-                        maxOnIteration = matrix[resInxs[counter], j];
+                        maxOnIteration = matrix[resultSlidesIndexes[counter], j];
                         nextIndex = j;
                     }
                 }
-                resInxs.Add(nextIndex);
+                resultSlidesIndexes.Add(nextIndex);
+                slidesFinal.Add(slidesSorted[nextIndex]);
                 ++counter;
             }
-            return resInxs.Sum();
+            slides = slidesFinal;
         }
-        //LEXUS//
     }
 }
